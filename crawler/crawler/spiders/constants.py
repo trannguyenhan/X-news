@@ -1,0 +1,5 @@
+HOST = "localhost"
+USER = "root"
+PASSWORD = "mysql12345"
+DATABASE = "x_news"
+PORT = "3306"
