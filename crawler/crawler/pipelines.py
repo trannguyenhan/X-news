@@ -11,10 +11,10 @@ import json
 class CrawlerPipeline:
     def open_spider(self, spider):
         self.producer = KafkaProducer(bootstrap_servers=['localhost:9092'], \
-            value_serializer=lambda x: json.dumps(x).encode('utf-8'))
+            value_serializer=lambda x: json.dumps(x, ensure_ascii=False).encode('utf-8'))
         self.topic = "x_news_1"
 
     def process_item(self, item, spider):
-        line = json.dumps(ItemAdapter(item).asdict())
+        line = ItemAdapter(item).asdict()
         self.producer.send(self.topic, value=line)
         return item

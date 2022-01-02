@@ -6,9 +6,3 @@
 pip3 install mysql-connector-python
 pip3 install kafka-python
 ```
-
-## Run
-
-```bash
-scrapy crawl news
-```
