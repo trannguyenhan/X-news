@@ -10,5 +10,5 @@ pip3 install kafka-python
 ## Run
 
 ```bash
-scrapy crawl news -o ~/output.json --set FEED_EXPORT_ENCODING=utf-8
+scrapy crawl news
 ```
