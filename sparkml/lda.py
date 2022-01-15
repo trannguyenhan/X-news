@@ -1,4 +1,5 @@
 import os
+import shutil
 
 from pyspark import SparkContext, SparkConf
 from pyspark.sql import SQLContext
@@ -47,4 +48,12 @@ topicsRdd = topics.rdd
 result = model.transform(vectorizedToken)
 result.show()
 
+if(os.path.isdir(constants.OUTPUT_PATH + "/Model_CountVectorizer")):
+    shutil.rmtree(constants.OUTPUT_PATH + "/Model_CountVectorizer")
 
+cvModel.save(constants.OUTPUT_PATH + "/Model_CountVectorizer")
+
+if(os.path.isdir(constants.OUTPUT_PATH + "/Model_LDA")):
+    shutil.rmtree(constants.OUTPUT_PATH + "/Model_LDA")
+
+model.save(constants.OUTPUT_PATH + "/Model_LDA")

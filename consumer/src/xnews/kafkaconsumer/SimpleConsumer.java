@@ -17,10 +17,11 @@ import org.json.simple.parser.ParseException;
 
 import com.opencsv.CSVWriter;
 
+import xnews.helper.Constants;
 import xnews.helper.Helper;
 import xnews.kafkaconsumer.properties.KafkaProperties;
 
-public class SimpleProducer {
+public class SimpleConsumer {
 	public static void main(String[] args) throws ParseException, IOException, URISyntaxException {
 		
 		// initialize json parser and kafka consumer
@@ -29,7 +30,7 @@ public class SimpleProducer {
 		
 		// initialize consumer and read data from topic of kafka
 		// topic: x_news_1
-		consumer.subscribe(Arrays.asList("x_news_1"));
+		consumer.subscribe(Arrays.asList(Constants.TOPIC));
 		try {
 			while(true) {
 				ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
